@@ -23,12 +23,13 @@ import Link from 'next/link';
 
 const drawerWidth = 150;
 
-const useStyles = makeStyles((theme: Theme) =>
+export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             display: 'flex',
         },
         appBar: {
+            maxHeight: "100px",
             backgroundColor: "#7283e1",
             zIndex: theme.zIndex.drawer + 1,
             transition: theme.transitions.create(['width', 'margin'], {
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
         },
         menuButton: {
-            marginRight: 36,
+            marginRight: 10,
         },
         hide: {
             display: 'none',
@@ -128,7 +129,6 @@ export default function Header() {
                         </Typography>
                     </Toolbar>
                 </Grid>
-
             </AppBar>
             <Drawer
                 variant="permanent"
@@ -158,14 +158,6 @@ export default function Header() {
                             <ListItemText primary="产品" />
                         </ListItem>
                     </Link>
-                    <Link href="/comments" passHref>
-                        <ListItem button component="div">
-                            <ListItemIcon>
-                                <StoreIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="评论" />
-                        </ListItem>
-                    </Link>
                     <Link href="/recipes" passHref>
                         <ListItem button component="div">
                             <ListItemIcon>
@@ -177,6 +169,5 @@ export default function Header() {
                 </List>
             </Drawer>
         </NoSsr>
-
     );
 }

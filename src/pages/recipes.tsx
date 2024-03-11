@@ -9,7 +9,7 @@ import {
     Chip,
     Container,
     Dialog, DialogActions, DialogTitle, Divider,
-    Grid,
+    Grid, NoSsr,
     Typography
 } from "@material-ui/core"
 import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
@@ -163,7 +163,10 @@ export default function Recipes({rawData}:any){
     return (
         <div style={{display: 'flex', width: '100%'}}>
             <Header/>
-            <Grid container spacing={1}>
+            <Grid container
+                  spacing={1}
+                  style={{paddingTop: "60px"}}
+            >
                 {rawData.recipes.map(function (recipe: any) {
                     return (
                         <RecipeCards
@@ -174,7 +177,6 @@ export default function Recipes({rawData}:any){
                     )
                 })}
             </Grid>
-
         </div>
     )
 }
@@ -188,6 +190,6 @@ export async function getStaticProps() {
         props: {
             rawData,
         },
-        // revalidate: 60
+        revalidate: 60
     }
 }

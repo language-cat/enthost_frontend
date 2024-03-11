@@ -10,7 +10,6 @@ const ProductDetail = ({ openDialog, handleCloseDialog, selectedRow, columns, se
     const handleInputChange = (event: any, fieldName: string) => {
         const { value } = event.target;
         const updatedRow = { ...selectedRow, [fieldName]: value };
-        console.log(updatedRow)
         setSelectedRow(updatedRow)
     }
 
@@ -55,7 +54,7 @@ const ProductDetail = ({ openDialog, handleCloseDialog, selectedRow, columns, se
     )
 }
 
-export default function Products({posts}: any) {
+export default function Products({rawData}: any) {
     const [selectedRow, setSelectedRow] = useState(null);
     const [openDialog, setOpenDialog] = useState(false);
     const [data, setData] = useState([])
@@ -164,7 +163,7 @@ export default function Products({posts}: any) {
             <div style={{flexGrow: 1, overflowX: 'auto', paddingTop: '55px'}}>
                 <DataGrid
                     columns={columns}
-                    rows={posts.products}
+                    rows={rawData.products}
                     rowsPerPageOptions={[5, 10, 25, 50, 100]}
                     checkboxSelection
                     disableSelectionOnClick
@@ -185,12 +184,13 @@ export default function Products({posts}: any) {
 
 export async function getStaticProps() {
     let res = await fetch('https://dummyjson.com/products')
-    let posts = await res.json()
+    let rawData = await res.json()
 
     return {
         props: {
-            posts,
+            rawData,
         },
+        revalidate: 60
     }
 }
 

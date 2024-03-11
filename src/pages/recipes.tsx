@@ -53,7 +53,7 @@ const RecipeCardDetail = ({openDialog, handleCloseDialog, columns, selectData}:a
 
             <DialogActions>
                 <Button variant="contained" color="primary" onClick={handleCloseDialog}>
-                    关闭
+                    close
                 </Button>
             </DialogActions>
         </Dialog>
@@ -163,7 +163,7 @@ export default function Recipes({rawData}:any){
     return (
         <div style={{display: 'flex', width: '100%'}}>
             <Header/>
-            <Grid container spacing={1} style={{ flex: 1, overflowY: 'auto' }}>
+            <Grid container spacing={1}>
                 {rawData.recipes.map(function (recipe: any) {
                     return (
                         <RecipeCards

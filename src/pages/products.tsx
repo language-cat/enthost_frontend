@@ -1,7 +1,7 @@
-import {DataGrid, GridColDef} from '@material-ui/data-grid';
+import {DataGrid} from '@material-ui/data-grid';
 import {useState} from "react";
 import Header from "@/components/Header";
-import {Button, Card, CardContent, Dialog, DialogActions, DialogTitle, Divider, Grid, TextField } from '@material-ui/core';
+import {Button, Card, CardContent, Dialog, DialogActions, DialogTitle, Divider, TextField } from '@material-ui/core';
 import React from 'react';
 import {useTheme} from "@material-ui/core/styles";
 import {productsColumns} from "@/columns/products";

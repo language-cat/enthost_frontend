@@ -9,16 +9,16 @@ import {
     Chip,
     Container,
     Dialog, DialogActions, DialogTitle, Divider,
-    Grid, NoSsr,
+    Grid,
     Typography
 } from "@material-ui/core"
-import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Header from "@/components/Header";
 import { Rating } from "@mui/material";
 import {recipesColumns} from "@/columns/recipes";
-import {createStyles, makeStyles, Theme, useTheme} from "@material-ui/core/styles";
+import {useTheme} from "@material-ui/core/styles";
 
-const RecipeCardDetail = ({openDialog, handleCloseDialog, columns, selectData}:any)=>{
+const RecipeCardDetail = ({openDialog, handleCloseDialog, selectData}:any)=>{
     return (
         <Dialog open={openDialog} onClose={handleCloseDialog}>
             <DialogTitle>Detail</DialogTitle>

@@ -1,5 +1,4 @@
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
-import {AppBar} from "@material-ui/core";
 
 const drawerWidth = 150;
 

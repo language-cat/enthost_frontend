@@ -3,6 +3,8 @@ import {useState} from "react";
 import Header from "@/components/Header";
 import {Button, Card, CardContent, Dialog, DialogActions, DialogTitle, Divider, Grid, TextField } from '@material-ui/core';
 import React from 'react';
+import {useTheme} from "@material-ui/core/styles";
+import {productsColumns} from "@/columns/products";
 
 
 const ProductDetail = ({ openDialog, handleCloseDialog, selectedRow, columns, setSelectedRow, handleEditButtonClick}:any) => {
@@ -55,58 +57,18 @@ const ProductDetail = ({ openDialog, handleCloseDialog, selectedRow, columns, se
 }
 
 export default function Products({rawData}: any) {
+    const theme = useTheme();
     const [selectedRow, setSelectedRow] = useState(null);
     const [openDialog, setOpenDialog] = useState(false);
     const [data, setData] = useState([])
-    const columns: GridColDef[] = [
-        {
-            field: 'id',
-            headerName: 'ID',
-            width: 150,
-            editable: false,
-        },
-        {
-            field:"brand",
-            headerName: '品牌',
-            width: 150,
-            editable: true,
-        },
-        {
-            field:"category",
-            headerName: '分类',
-            width: 150,
-            editable: true,
-        },
-        {
-            field: 'title',
-            headerName: '主题',
-            width: 150,
-            editable: true,
-        },
-        {
-            field: 'price',
-            headerName: '价格',
-            width: 150,
-            editable: true,
-        },
-        {
-            field: 'stock',
-            headerName: '库存',
-            width: 150,
-            editable: true,
-        },
 
-        {
-            field: 'rating',
-            headerName: '评分',
-            width: 150,
-            editable: true,
-        },
+    const columns = [
+        ...productsColumns,
         {
             field: "操作",
             headerName: '操作',
             width: 300,
-            renderCell: (params) => (
+            renderCell: (params:any) => (
                 <div style={{ display: 'flex', gap: '4px' }}>
                     <Button
                         variant="contained"
@@ -137,6 +99,7 @@ export default function Products({rawData}: any) {
             )
         },
     ]
+
     const handleRowClick = (params:any) => {
         setSelectedRow(params.row);
         setOpenDialog(true);
@@ -159,8 +122,7 @@ export default function Products({rawData}: any) {
     return (
         <div style={{display: 'flex', height: '95vh', width: '100%'}}>
             <Header/>
-            {/*TODO paddingTop need to be fixed */}
-            <div style={{flexGrow: 1, overflowX: 'auto', paddingTop: '55px'}}>
+            <div style={{flexGrow: 1, overflowX: 'auto', paddingTop: `${theme.mixins.toolbar.minHeight}px`}}>
                 <DataGrid
                     columns={columns}
                     rows={rawData.products}

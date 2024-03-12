@@ -16,6 +16,7 @@ import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
 import Header from "@/components/Header";
 import { Rating } from "@mui/material";
 import {recipesColumns} from "@/columns/recipes";
+import {createStyles, makeStyles, Theme, useTheme} from "@material-ui/core/styles";
 
 const RecipeCardDetail = ({openDialog, handleCloseDialog, columns, selectData}:any)=>{
     return (
@@ -158,14 +159,14 @@ const RecipeCards = ({recipe, columns}:any) =>{
 }
 
 export default function Recipes({rawData}:any){
+    const theme = useTheme();
     const [data, setDate] = useState([])
-
     return (
         <div style={{display: 'flex', width: '100%'}}>
             <Header/>
             <Grid container
                   spacing={1}
-                  style={{paddingTop: "60px"}}
+                  style={{paddingTop: `${theme.mixins.toolbar.minHeight}px`}}
             >
                 {rawData.recipes.map(function (recipe: any) {
                     return (
@@ -174,7 +175,7 @@ export default function Recipes({rawData}:any){
                             recipe={recipe}
                             columns={recipesColumns}
                         />
-                    )
+                    );
                 })}
             </Grid>
         </div>

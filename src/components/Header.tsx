@@ -19,7 +19,7 @@ import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 import StoreIcon from '@material-ui/icons/Store';
 import Link from 'next/link';
-import {headerStyle} from "../../ui/header";
+import {headerStyle} from "@/ui/header";
 
 
 export default function Header() {

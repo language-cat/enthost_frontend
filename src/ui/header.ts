@@ -5,10 +5,6 @@ const drawerWidth = 150;
 export const headerStyle = (theme:any) =>  makeStyles(()=>{
     return (
         createStyles({
-            content: {
-                flexGrow: 1,
-                padding: theme.spacing(3),
-            },
             toolbar: {
                 display: 'flex',
                 alignItems: 'center',

@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import {
-    AppBar,
-    Toolbar,
     IconButton,
     Typography,
-    NoSsr,
-    ListItem,
-    ListItemText,
-    ListItemIcon,
+    NoSsr
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from "clsx";
@@ -15,24 +10,29 @@ import {ThemeProvider, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import Divider from "@material-ui/core/Divider";
-import List from "@material-ui/core/List";
+import Divider from '@mui/material/Divider';
+import List from '@mui/material/List';
 import StoreIcon from '@material-ui/icons/Store';
 import Link from 'next/link';
 import {headerStyle} from "@/ui/header";
-
+import {AppBar, ListItem, ListItemIcon, ListItemText} from "@mui/material";
+import ListItemButton from "@mui/material/ListItemButton";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
 
 export default function Header() {
     const [open, setOpen] = useState(false);
-    const styles = headerStyle();
     const theme = useTheme();
+    const styles = headerStyle(theme)();
 
     const handleDrawerOpen = () => {
-        setOpen(true);
+        setOpen(!open);
     };
 
     const handleDrawerClose = () => {
-        setOpen(false);
+        setOpen(!open);
     };
 
     return (
@@ -58,43 +58,44 @@ export default function Header() {
                 </Toolbar>
             </AppBar>
             <Drawer
-                variant="permanent"
                 className={clsx(styles.drawer, {
                     [styles.drawerOpen]: open,
                     [styles.drawerClose]: !open,
                 })}
                 classes={{
-                    paper: clsx({
-                        [styles.drawerOpen]: open,
-                        [styles.drawerClose]: !open,
-                    }),
-                }}
+                paper: clsx({
+                    [styles.drawerOpen]: open,
+                    [styles.drawerClose]: !open,
+                })}}
+                variant="persistent"
+                anchor="left"
+                open={open}
             >
                 <div className={styles.toolbar}>
                     <IconButton onClick={handleDrawerClose}>
-                    {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
+                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
                 </div>
                 <Divider/>
                 <ThemeProvider theme={theme}>
-                 <List>
-                     <Link href="/products" passHref>
-                         <ListItem button component="div">
-                             <ListItemIcon>
-                                 <StoreIcon />
-                             </ListItemIcon>
-                             <ListItemText primary="产品" />
-                         </ListItem>
-                     </Link>
-                     <Link href="/recipes" passHref>
-                        <ListItem button component="div">
-                             <ListItemIcon>
-                                <StoreIcon />
-                             </ListItemIcon>
-                             <ListItemText primary="食谱" />
-                         </ListItem>
-                     </Link>
-                 </List>
+                     <List>
+                         <Link href="/recipes" passHref>
+                            <ListItem disablePadding component="div">
+                                 <ListItemIcon>
+                                    <StoreIcon />
+                                 </ListItemIcon>
+                                 <ListItemText primary="recipes" />
+                             </ListItem>
+                         </Link>
+                         <Link href="/products" passHref>
+                             <ListItem disablePadding component="div">
+                                 <ListItemIcon>
+                                     <StoreIcon />
+                                 </ListItemIcon>
+                                 <ListItemText primary="products" />
+                             </ListItem>
+                         </Link>
+                     </List>
                 </ThemeProvider>
             </Drawer>
         </NoSsr>

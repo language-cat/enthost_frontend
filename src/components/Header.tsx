@@ -87,6 +87,14 @@ export default function Header() {
                                  <ListItemText primary="products" />
                              </ListItem>
                          </Link>
+                         <Link href="/recipes" passHref>
+                             <ListItem disablePadding component="div">
+                                 <ListItemIcon>
+                                     <StoreIcon />
+                                 </ListItemIcon>
+                                 <ListItemText primary="recipes" />
+                             </ListItem>
+                         </Link>
                      </List>
                 </ThemeProvider>
             </Drawer>

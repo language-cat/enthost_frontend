@@ -16,11 +16,8 @@ import StoreIcon from '@material-ui/icons/Store';
 import Link from 'next/link';
 import {headerStyle} from "@/ui/header";
 import {AppBar, ListItem, ListItemIcon, ListItemText} from "@mui/material";
-import ListItemButton from "@mui/material/ListItemButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
+import {Kitchen} from "@material-ui/icons";
 
 export default function Header() {
     const [open, setOpen] = useState(false);
@@ -67,7 +64,7 @@ export default function Header() {
                     [styles.drawerOpen]: open,
                     [styles.drawerClose]: !open,
                 })}}
-                variant="persistent"
+                variant="temporary"
                 anchor="left"
                 open={open}
             >
@@ -82,19 +79,21 @@ export default function Header() {
                          <Link href="/products" passHref>
                              <ListItem disablePadding component="div">
                                  <ListItemIcon>
-                                     <StoreIcon />
+                                     <StoreIcon fontSize="large"/>
                                  </ListItemIcon>
-                                 <ListItemText primary="products" />
+                                 <ListItemText primary={<Typography variant="h6">Products</Typography>} />
                              </ListItem>
                          </Link>
+                         <Divider/>
                          <Link href="/recipes" passHref>
                              <ListItem disablePadding component="div">
                                  <ListItemIcon>
-                                     <StoreIcon />
+                                     <Kitchen fontSize="large"/>
                                  </ListItemIcon>
-                                 <ListItemText primary="recipes" />
+                                 <ListItemText primary={<Typography variant="h6">Recipes</Typography>}/>
                              </ListItem>
                          </Link>
+                         <Divider/>
                      </List>
                 </ThemeProvider>
             </Drawer>

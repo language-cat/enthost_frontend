@@ -73,7 +73,7 @@ export default function Products({rawData}: any) {
                 <div style={{ display: 'flex', gap: '4px' }}>
                     <Button
                         variant="contained"
-                        style={{ backgroundColor: 'lightblue', color: 'black' }}
+                        style={{ backgroundColor: '#c0fc99', color: 'black' }}
                         size="small"
                         onClick={() => handleRowClick(params)}
                     >
@@ -81,7 +81,7 @@ export default function Products({rawData}: any) {
                     </Button>
                     <Button
                         variant="contained"
-                        style={{ backgroundColor: 'darkblue', color: 'white' }}
+                        style={{ backgroundColor: '#3f50b5', color: 'white' }}
                         size="small"
                         onClick={() => handleEditButtonClick(params.row)}
                     >
@@ -89,7 +89,7 @@ export default function Products({rawData}: any) {
                     </Button>
                     <Button
                         variant="contained"
-                        style={{ backgroundColor: 'darkred', color: 'white' }}
+                        style={{ backgroundColor: '#fd2f1f', color: 'white' }}
                         size="small"
                         onClick={() => handleDeleteButtonClick(params.row)}
                     >

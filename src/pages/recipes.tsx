@@ -90,7 +90,7 @@ const RecipeCards = ({recipe, columns}:any) =>{
     }
 
     return (
-        <Grid item xs={12} sm={6} md={4} lg={4}>
+        <Grid item xs={12} sm={6} md={4} lg={3}>
             <Container>
                 <Card variant="outlined">
                     <CardHeader
@@ -162,7 +162,7 @@ export default function Recipes({rawData}:any){
     const theme = useTheme();
     const [data, setDate] = useState([])
     return (
-        <div style={{display: 'flex', width: '100%'}}>
+        <Box style={{width: '100%'}}>
             <Header/>
             <Grid container
                   spacing={1}
@@ -178,7 +178,7 @@ export default function Recipes({rawData}:any){
                     );
                 })}
             </Grid>
-        </div>
+        </Box>
     )
 }
 

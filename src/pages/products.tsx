@@ -5,6 +5,7 @@ import {Button, Card, CardContent, Dialog, DialogActions, DialogTitle, Divider, 
 import React from 'react';
 import {useTheme} from "@material-ui/core/styles";
 import {productsColumns} from "@/columns/products";
+import Box from "@mui/material/Box";
 
 
 const ProductDetail = ({ openDialog, handleCloseDialog, selectedRow, columns, setSelectedRow, handleEditButtonClick}:any) => {
@@ -80,7 +81,7 @@ export default function Products({rawData}: any) {
                     </Button>
                     <Button
                         variant="contained"
-                        color="primary"
+                        style={{ backgroundColor: 'darkblue', color: 'white' }}
                         size="small"
                         onClick={() => handleEditButtonClick(params.row)}
                     >
@@ -88,7 +89,7 @@ export default function Products({rawData}: any) {
                     </Button>
                     <Button
                         variant="contained"
-                        color="secondary"
+                        style={{ backgroundColor: 'darkred', color: 'white' }}
                         size="small"
                         onClick={() => handleDeleteButtonClick(params.row)}
                     >
@@ -120,26 +121,24 @@ export default function Products({rawData}: any) {
     }
 
     return (
-        <div style={{display: 'flex', height: '95vh', width: '100%'}}>
+        <Box sx={{ height: '98vh', width: '100%' }}>
             <Header/>
-            <div style={{flexGrow: 1, overflowX: 'auto', paddingTop: `${theme.mixins.toolbar.minHeight}px`}}>
-                <DataGrid
-                    columns={columns}
-                    rows={rawData.products}
-                    rowsPerPageOptions={[5, 10, 25, 50, 100]}
-                    checkboxSelection
-                    disableSelectionOnClick
-                />
-                <ProductDetail
-                    openDialog={openDialog}
-                    handleCloseDialog={handleCloseDialog}
-                    handleEditButtonClick={handleEditButtonClick}
-                    setSelectedRow={setSelectedRow}
-                    selectedRow={selectedRow}
-                    columns={columns}
-                />
-            </div>
-        </div>
+            <DataGrid
+                columns={columns}
+                rows={rawData.products}
+                rowsPerPageOptions={[5, 10, 25, 50, 100]}
+                checkboxSelection
+                disableSelectionOnClick
+            />
+            <ProductDetail
+                openDialog={openDialog}
+                handleCloseDialog={handleCloseDialog}
+                handleEditButtonClick={handleEditButtonClick}
+                setSelectedRow={setSelectedRow}
+                selectedRow={selectedRow}
+                columns={columns}
+            />
+        </Box>
     );
 }
 

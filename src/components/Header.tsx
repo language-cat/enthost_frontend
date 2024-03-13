@@ -79,14 +79,6 @@ export default function Header() {
                 <Divider/>
                 <ThemeProvider theme={theme}>
                      <List>
-                         <Link href="/recipes" passHref>
-                            <ListItem disablePadding component="div">
-                                 <ListItemIcon>
-                                    <StoreIcon />
-                                 </ListItemIcon>
-                                 <ListItemText primary="recipes" />
-                             </ListItem>
-                         </Link>
                          <Link href="/products" passHref>
                              <ListItem disablePadding component="div">
                                  <ListItemIcon>

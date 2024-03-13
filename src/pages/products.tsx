@@ -123,21 +123,23 @@ export default function Products({rawData}: any) {
     return (
         <Box sx={{ height: '98vh', width: '100%' }}>
             <Header/>
-            <DataGrid
-                columns={columns}
-                rows={rawData.products}
-                rowsPerPageOptions={[5, 10, 25, 50, 100]}
-                checkboxSelection
-                disableSelectionOnClick
-            />
-            <ProductDetail
-                openDialog={openDialog}
-                handleCloseDialog={handleCloseDialog}
-                handleEditButtonClick={handleEditButtonClick}
-                setSelectedRow={setSelectedRow}
-                selectedRow={selectedRow}
-                columns={columns}
-            />
+            <div style={{height: '90%', width: '100%' ,paddingTop: `${theme.mixins.toolbar.minHeight}px`}}>
+                <DataGrid
+                    columns={columns}
+                    rows={rawData.products}
+                    rowsPerPageOptions={[5, 10, 25, 50, 100]}
+                    checkboxSelection
+                    disableSelectionOnClick
+                />
+                <ProductDetail
+                    openDialog={openDialog}
+                    handleCloseDialog={handleCloseDialog}
+                    handleEditButtonClick={handleEditButtonClick}
+                    setSelectedRow={setSelectedRow}
+                    selectedRow={selectedRow}
+                    columns={columns}
+                />
+            </div>
         </Box>
     );
 }
